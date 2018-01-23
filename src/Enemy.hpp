@@ -14,14 +14,17 @@
 
 class Enemy : public Entity {
 	public:
-		Enemy();
+		Enemy(){};
+		
+		Enemy(int health, int currency, ofImage sprite, float x, float y);
+	
 		~Enemy();
 	
-		void Draw();
-		void Update();
+//		void Draw();
+//		void Update();
 	
 	private:
-		//
+		typedef Entity super;
 };
 
 #endif /* Enemy_hpp */

@@ -7,21 +7,36 @@
 //
 
 #include "Entity.hpp"
+#include <vector>
 
 
-Entity::Entity(int health, int currency) {
+
+
+Entity::Entity(int health, int currency, ofImage sprite, int x, int y) {
+	_sprite = sprite;
 	_health = health;
 	_currency = currency;
+	SetPos(x, y);
 }
 
 Entity::~Entity() {
 	
 }
 
-void Entity::Draw() {
+void Entity::SetPos(float x, float y) {
+	_spritePos[0] = x;
+	_spritePos[1] = y;
+	
+}
 
+void Entity::Draw() {
+	_sprite.draw(_spritePos[0], _spritePos[1]);
 }
 
 void Entity::Update() {
 
 }
+
+//void Entity::SetSprite(ofImage sprite) {
+//
+//}

@@ -8,20 +8,18 @@
 
 #include "Player.hpp"
 
-Player::Player(int hp, int currency) {
-	SetHP(hp);
-	SetCurrency(currency);
-	_sprite.load("characters/c0.png");
+Player::Player(int health, int currency, ofImage sprite, float x, float y) : super(health, currency, sprite, x, y) {
+
 }
 
 Player::~Player() {
 
 }
 
-void Player::Draw() {
-	_sprite.draw(500, 500);
-}
-
-void Player::Update() {
-
-}
+//void Player::Draw() {
+//	 
+//}
+//
+//void Player::Update() {
+//
+//}

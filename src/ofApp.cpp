@@ -1,8 +1,10 @@
 #include "ofApp.h"
 
+
 void ofApp::setup(){
-//	e = Entity(10, 10);
-	p = Player(10, 10);
+	g = Game();
+	g.CreateEntity(PLAYER, 10, 10, 0, 500, 500);
+	g.CreateEntity(ENEMY, 10, 10, 2, 1000, 500);
 }
 
 void ofApp::update(){
@@ -10,8 +12,8 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
-	ofBackground(255, 255, 255);
-	p.Draw();
+	g.Draw();
+	
 
 }
 

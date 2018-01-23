@@ -22,5 +22,4 @@ class ofApp : public ofBaseApp{
 
 	private:
 		Game g;
-		Player p;
 };

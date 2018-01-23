@@ -17,15 +17,16 @@ class Player : public Entity {
 	public:
 		Player(){};
 	
-		Player(int health, int currency);
+		Player(int health, int currency, ofImage sprite, float x, float y);
 		~Player();
-	
-		void Draw();
-		void Update();
+////	
+////	void Draw();
+//		void Update();
 	
 	private:
+		typedef Entity super;
+	
 		ofImage _sprite;
-		
 		
 };
 
