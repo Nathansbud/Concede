@@ -12,19 +12,19 @@
 #include <stdio.h>
 #include "Entity.hpp"
 
-class Enemy : public Entity {
-	public:
-		Enemy(){};
-		
-		Enemy(int health, int currency, ofImage sprite, float x, float y);
-	
-		~Enemy();
-	
-//		void Draw();
-//		void Update();
-	
-	private:
-		typedef Entity super;
-};
+//class Enemy : public Entity {
+//	public:
+//		Enemy(){};
+//		
+//		Enemy(int health, int currency, ofImage sprite, float x, float y);
+//	
+//		~Enemy();
+//	
+////		void Draw();
+////		void Update();
+//	
+//	private:
+//		typedef Entity super;
+//};
 
 #endif /* Enemy_hpp */

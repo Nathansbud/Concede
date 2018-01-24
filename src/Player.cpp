@@ -8,13 +8,13 @@
 
 #include "Player.hpp"
 
-Player::Player(int health, int currency, ofImage sprite, float x, float y) : super(health, currency, sprite, x, y) {
-
-}
-
-Player::~Player() {
-
-}
+//Player::Player(int health, int currency, ofImage sprite, float x, float y) : super(health, currency, sprite, x, y) {
+//
+//}
+//
+//Player::~Player() {
+//
+//}
 
 //void Player::Draw() {
 //	 

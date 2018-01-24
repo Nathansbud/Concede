@@ -16,9 +16,10 @@
 
 #include "ofMain.h"
 
-enum class GameState {
+enum GameState {
     TITLE,
-    GAME,
+    OVERWORLD,
+	BATTLE,
     DEATH
 };
 
@@ -30,17 +31,23 @@ class Game {
         void Update();
 		void Draw();
 	
+        void CreateUI();
+
+    
 		static const int CHAR_NUM = 3;
 		static const int ENEMY_NUM = 3;
     
-        void CreateEntity(EntityType t, int health, int currency, int sprite, float x, float y);
+        void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
         
 	private:
 		void LoadSprites();
 	
-		Player p;
-		Enemy e;
+//		Player p;
 	
+		Entity p;
+        Entity e;
+		Entity o;
+		
         GameState state;
     
 		ofImage _characterSprites[CHAR_NUM];

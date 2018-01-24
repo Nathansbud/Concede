@@ -8,12 +8,9 @@
 
 #include "Game.hpp"
 
-
-
-
 Game::Game() {
 	LoadSprites();
-	state = GameState::GAME;
+	state = BATTLE;
 	
 }
 
@@ -21,18 +18,19 @@ Game::~Game() {
 	
 }
 
+
+
 void Game::Draw() {
-	if(state == GameState::GAME) {
-		ofBackground(255, 255, 255);
+	ofBackground(255, 255, 255);
+	CreateUI();
+	if(state == BATTLE) {
 		p.Draw();
 		e.Draw();
 	}
 }
 
-
-
 void Game::Update() {
-	cout << p.GetCurrency() << endl;
+	cout << e.GetCurrency() << endl;
 }
 
 
@@ -47,11 +45,34 @@ void Game::LoadSprites() {
 	}
 }
 
-void Game::CreateEntity(EntityType t, int health, int currency, int sprite, float x, float y) {
+void Game::CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y) {
 	
-	if(t == ENEMY) {
-		e = Enemy(health, currency, _enemySprites[sprite], x, y);
-	} else {
-		p = Player(health, currency, _characterSprites[sprite], x, y);
+	switch(t) {
+		case PLAYER:
+			p = Entity(health, maxHealth, currency, _characterSprites[sprite], x, y);
+			break;
+		case ENEMY:
+			e = Entity(health, maxHealth, currency, _enemySprites[sprite], x, y);
+			break;
+		case ENTITY:
+			o = Entity();
+			break;
+	}
+}
+
+void Game::CreateUI() {
+	ofSetColor(0, 0, 0);
+	
+	switch(state) {
+		case TITLE:
+			break;
+		case OVERWORLD:
+			break;
+		case BATTLE:
+			ofDrawBitmapString("Hit Points: " + to_string(p.GetHP()) + "/" + to_string(p.GetMaxHP()), 100, 100);
+			ofDrawBitmapString("Gold: " + to_string(p.GetCurrency()), 100, 150);
+			break;
+		case DEATH:
+			break;
 	}
 }

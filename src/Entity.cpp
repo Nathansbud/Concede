@@ -12,11 +12,12 @@
 
 
 
-Entity::Entity(int health, int currency, ofImage sprite, int x, int y) {
-	_sprite = sprite;
-	_health = health;
-	_currency = currency;
+Entity::Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y) {
+	SetSprite(sprite);
 	SetPos(x, y);
+	_health[0] = health;
+	_health[1] = maxHealth;
+	_currency = currency;
 }
 
 Entity::~Entity() {
@@ -30,13 +31,12 @@ void Entity::SetPos(float x, float y) {
 }
 
 void Entity::Draw() {
+	ofSetColor(255, 255, 255);
+	ofNoFill();
+	
 	_sprite.draw(_spritePos[0], _spritePos[1]);
 }
 
 void Entity::Update() {
 
 }
-
-//void Entity::SetSprite(ofImage sprite) {
-//
-//}
