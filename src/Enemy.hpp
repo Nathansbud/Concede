@@ -25,6 +25,7 @@ class Enemy : public Entity {
 	
 	private:
 		typedef Entity super;
+		
 };
 
 #endif /* Enemy_hpp */

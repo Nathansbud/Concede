@@ -9,10 +9,10 @@
 #include "Game.hpp"
 
 
-
-
 Game::Game() {
 	LoadSprites();
+//	Settings();
+
 	state = GameState::GAME;
 	
 }
@@ -23,6 +23,7 @@ Game::~Game() {
 
 void Game::Draw() {
 	if(state == GameState::GAME) {
+		CreateUI();
 		ofBackground(255, 255, 255);
 		p.Draw();
 		e.Draw();
@@ -32,9 +33,15 @@ void Game::Draw() {
 
 
 void Game::Update() {
-	cout << p.GetCurrency() << endl;
+//	p.Update();
+//	e.Update();
+//	cout << p.GetCurrency() << endl;
 }
 
+void Game::Settings() {
+	ofSetBackgroundColor(255, 255, 255);
+	ofSetColor(0, 0, 0);
+}
 
 
 void Game::LoadSprites() {
@@ -49,9 +56,23 @@ void Game::LoadSprites() {
 
 void Game::CreateEntity(EntityType t, int health, int currency, int sprite, float x, float y) {
 	
-	if(t == ENEMY) {
-		e = Enemy(health, currency, _enemySprites[sprite], x, y);
-	} else {
-		p = Player(health, currency, _characterSprites[sprite], x, y);
+	switch(t) {
+		case ENEMY:
+			e = Enemy(health, currency, _enemySprites[sprite], x, y);
+			break;
+
+		case PLAYER:
+			p = Player(health, currency, _characterSprites[sprite], x, y);
+			break;
+
+		default:
+//			en = Entity(health, currency, _characterSprites[sprite], x, y);
+			break;
+			
 	}
+}
+
+void Game::CreateUI() {
+	ofDrawBitmapString("Work pls", 100, 100);
+//	ofDrawBitmapString(to_string(p.GetCurrency()), 100, 100);
 }

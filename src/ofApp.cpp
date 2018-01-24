@@ -3,11 +3,12 @@
 
 void ofApp::setup(){
 	g = Game();
-	g.CreateEntity(PLAYER, 10, 10, 0, 500, 500);
-	g.CreateEntity(ENEMY, 10, 10, 2, 1000, 500);
+	g.CreateEntity(OTHER, 10, 10, 0, 500, 500);
+//	g.CreateEntity(10, 10, 2, 1000, 500);
 }
 
 void ofApp::update(){
+	g.Update();
 
 }
 

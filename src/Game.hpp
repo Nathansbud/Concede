@@ -36,16 +36,19 @@ class Game {
         void CreateEntity(EntityType t, int health, int currency, int sprite, float x, float y);
         
 	private:
+		void Settings();
+		void CreateUI();
 		void LoadSprites();
+	
+//		Entity en;
 	
 		Player p;
 		Enemy e;
 	
         GameState state;
-    
+	
 		ofImage _characterSprites[CHAR_NUM];
 		ofImage _enemySprites[ENEMY_NUM];
-		
 };
 
 #endif /* Game_hpp */

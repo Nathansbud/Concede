@@ -12,15 +12,16 @@
 
 
 
-Entity::Entity(int health, int currency, ofImage sprite, int x, int y) {
-	_sprite = sprite;
+Entity::Entity(int health, int currency, ofImage& sprite, int x, int y) {
 	_health = health;
 	_currency = currency;
+	SetSprite(sprite);
 	SetPos(x, y);
 }
 
 Entity::~Entity() {
-	
+//	delete _sprite;
+//	_sprite = 0;
 }
 
 void Entity::SetPos(float x, float y) {
@@ -36,7 +37,3 @@ void Entity::Draw() {
 void Entity::Update() {
 
 }
-
-//void Entity::SetSprite(ofImage sprite) {
-//
-//}

@@ -25,9 +25,6 @@ class Player : public Entity {
 	
 	private:
 		typedef Entity super;
-	
-		ofImage _sprite;
-		
 };
 
 #endif /* Player_hpp */
