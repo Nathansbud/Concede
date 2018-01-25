@@ -16,6 +16,16 @@ Game::Game() {
 
 Game::~Game() {
 	
+	e = 0;
+	delete e;
+	
+	
+	o = 0;
+	delete o;
+	
+	
+	p = 0;
+	delete p;
 }
 
 
@@ -24,13 +34,14 @@ void Game::Draw() {
 	ofBackground(255, 255, 255);
 	CreateUI();
 	if(state == BATTLE) {
-		p.Draw();
-		e.Draw();
+		p->Draw();
+		e->Draw();
+		_playerButtons[0].Draw();
 	}
 }
 
 void Game::Update() {
-	cout << e.GetCurrency() << endl;
+//	cout << e.GetCurrency() << endl;
 }
 
 
@@ -49,15 +60,28 @@ void Game::CreateEntity(EntityType t, int health, int maxHealth, int currency, i
 	
 	switch(t) {
 		case PLAYER:
-			p = Entity(health, maxHealth, currency, _characterSprites[sprite], x, y);
+			p = new Entity(health, maxHealth, currency, _characterSprites[sprite], x, y);
 			break;
 		case ENEMY:
-			e = Entity(health, maxHealth, currency, _enemySprites[sprite], x, y);
+			e = new Entity(health, maxHealth, currency, _enemySprites[sprite], x, y);
 			break;
 		case ENTITY:
-			o = Entity();
+			o = new Entity();
 			break;
 	}
+}
+
+void Game::CreateButton() {
+//	auto buttonCall = std::bind(&Entity::ChangeHP, p, _1);
+	
+	
+//	_b = Button(p, p.Draw(), "Test", 100, 100, 100, 100);
+
+//	_b = Button(p, p.Draw(), "Hi", 100, 100, 100, 100);
+//	void Button::Use(void (Entity::*function)(), Entity &en) {
+//	(en.*function)();
+	_playerButtons[0] = Button("Test", 350, 700, 100, 50);
+	
 }
 
 void Game::CreateUI() {
@@ -69,10 +93,21 @@ void Game::CreateUI() {
 		case OVERWORLD:
 			break;
 		case BATTLE:
-			ofDrawBitmapString("Hit Points: " + to_string(p.GetHP()) + "/" + to_string(p.GetMaxHP()), 100, 100);
-			ofDrawBitmapString("Gold: " + to_string(p.GetCurrency()), 100, 150);
+			
+			ofDrawBitmapString("Hit Points: " + to_string(p->GetHP()) + "/" + to_string(p->GetMaxHP()), 100, 100);
+			ofDrawBitmapString("Gold: " + to_string(p->GetCurrency()), 100, 150);
+			CreateButton();
+			
+			//
+			
+			ofDrawBitmapString("Enemy Hit Points: " + to_string(e->GetHP()) + "/" + to_string(e->GetMaxHP()), 1000, 100);
+			ofDrawBitmapString("Gold: " + to_string(e->GetCurrency()), 1000, 150);
+			
 			break;
 		case DEATH:
 			break;
 	}
+	
+	
+	
 }

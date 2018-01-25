@@ -13,8 +13,11 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "Entity.hpp"
+#include "Button.hpp"
 
 #include "ofMain.h"
+
+using namespace std::placeholders;
 
 enum GameState {
     TITLE,
@@ -33,21 +36,26 @@ class Game {
 	
         void CreateUI();
 
-    
+	
 		static const int CHAR_NUM = 3;
 		static const int ENEMY_NUM = 3;
     
         void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
-        
+    
+		Entity& GetPlayer() {return *p;}
+
 	private:
+		void CreateButton();
 		void LoadSprites();
 	
 //		Player p;
 	
-		Entity p;
-        Entity e;
-		Entity o;
-		
+		Entity *p;
+        Entity *e;
+		Entity *o;
+	
+        Button _playerButtons[2];
+
         GameState state;
     
 		ofImage _characterSprites[CHAR_NUM];

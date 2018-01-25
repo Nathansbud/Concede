@@ -40,15 +40,19 @@ class Entity {
 		int GetCurrency() {return _currency;}
 		EntityType GetType() {return _t;}
 	
+		void ChangeHP(int amount) {_health[0] += amount;}
+
+	
 		static const int SPRITE_W = 350;
 		static const int SPRITE_H = 350;
+	
+		//Player Pos = {500 (+ 350), }
 	
 	
 	protected:
 		void SetType(EntityType t) { _t = t;}
 		
 		void SetHP(int value) {_health[0] = value;}
-		void ChangeHP(int amount) {_health[0] += amount;}
 	
 		void SetCurrency(int value) {_currency = value;}
 		void ChangeCurrency(int amount) {_currency += amount;}

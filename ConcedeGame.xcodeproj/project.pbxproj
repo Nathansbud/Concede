@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFAF21A720190152001D3D3C /* Button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFAF21A520190152001D3D3C /* Button.cpp */; };
 		BFD11AB92016625500817F14 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD11AB72016625500817F14 /* Entity.cpp */; };
 		BFD11ABC2016636000817F14 /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD11ABA2016636000817F14 /* Player.cpp */; };
 		BFD11ABF2016636700817F14 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BFD11ABD2016636700817F14 /* Enemy.cpp */; };
@@ -46,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BFAF21A520190152001D3D3C /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Button.cpp; path = ../Button.cpp; sourceTree = "<group>"; };
+		BFAF21A620190152001D3D3C /* Button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Button.hpp; path = ../Button.hpp; sourceTree = "<group>"; };
 		BFD11AB72016625500817F14 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		BFD11AB82016625500817F14 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 		BFD11ABA2016636000817F14 /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; tabWidth = 3; };
@@ -124,6 +127,8 @@
 				BFD11ABB2016636000817F14 /* Player.hpp */,
 				BFD11ABD2016636700817F14 /* Enemy.cpp */,
 				BFD11ABE2016636700817F14 /* Enemy.hpp */,
+				BFAF21A520190152001D3D3C /* Button.cpp */,
+				BFAF21A620190152001D3D3C /* Button.hpp */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 			);
 			path = src;
@@ -228,6 +233,7 @@
 				BFD11ABC2016636000817F14 /* Player.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				BFD11ABF2016636700817F14 /* Enemy.cpp in Sources */,
+				BFAF21A720190152001D3D3C /* Button.cpp in Sources */,
 				BFD11AC22016641100817F14 /* Game.cpp in Sources */,
 				BFD11AB92016625500817F14 /* Entity.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
