@@ -7,10 +7,6 @@
 //
 
 #include "Entity.hpp"
-#include <vector>
-
-
-
 
 Entity::Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y) {
 	SetSprite(sprite);

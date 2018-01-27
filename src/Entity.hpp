@@ -10,14 +10,13 @@
 #define Entity_hpp
 
 #include <stdio.h>
+#include <map>
+#include <vector>
+
 #include "ofImage.h"
 #include "ofGraphics.h"
 
-enum EntityType {
-	PLAYER,
-	ENEMY,
-	ENTITY
-};
+#include "Names.h"
 
 
 class Entity {
@@ -47,7 +46,7 @@ class Entity {
 		static const int SPRITE_H = 350;
 	
 		//Player Pos = {500 (+ 350), }
-	
+
 	
 	protected:
 		void SetType(EntityType t) { _t = t;}
@@ -61,15 +60,15 @@ class Entity {
 	
 	
 	private:
-		
 		int _health[2];
 		int _currency;
 		EntityType _t;
+		string _entityName;
 		
 		void LoadSprites();
 		ofImage _sprite;
 		float _spritePos[2];
-	
+
 };
 
 #endif /* Entity_hpp */

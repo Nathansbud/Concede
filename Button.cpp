@@ -47,7 +47,7 @@ void Button::Draw() {
 	ofDrawBitmapString(_buttonText, GetX() + (GetW()/3), GetY() + GetH()/1.4);
 	ofDrawRectangle(_buttonPos[0], _buttonPos[1], _buttonSize[0], _buttonSize[1]);
 	
-	cout << to_string(_buttonPos[0]) << ", " << to_string(_buttonPos[1]) << " (X, Y), " << to_string(_buttonSize[0]) <<  ", " << to_string(_buttonSize[1]) << " (W, H)" << endl;
+//	cout << to_string(_buttonPos[0]) << ", " << to_string(_buttonPos[1]) << " (X, Y), " << to_string(_buttonSize[0]) <<  ", " << to_string(_buttonSize[1]) << " (W, H)" << endl;
 }
 
 void Button::Update() {

@@ -8,15 +8,7 @@
 
 #include "Enemy.hpp"
 
-//Enemy::Enemy(int health, int currency, ofImage sprite, float x, float y) : super(health, currency, sprite, x, y) {
-//	
-//	SetType(ENEMY);
-//}
-//
-//Enemy::~Enemy() {
-//
-//}
+Enemy::Enemy(int health, int currency, ofImage &sprite, float x, float y) : super(health, currency, sprite, x, y) {
 
-//void Enemy::Draw() {
-//
-//}
+
+}

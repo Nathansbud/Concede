@@ -8,19 +8,10 @@
 
 #include "Player.hpp"
 
-//Player::Player(int health, int currency, ofImage sprite, float x, float y) : super(health, currency, sprite, x, y) {
-//
-//}
-//
+Player::Player(CharacterName c, int health, int maxHealth, int currency, ofImage &sprite, float x, float y) : super(health, maxHealth, currency, sprite, x, y) {
+	 _c = c;
+}
+
 //Player::~Player() {
-//
-//}
-
-//void Player::Draw() {
-//	 
-//}
-//
-//void Player::Update() {
-
 //
 //}

@@ -15,14 +15,11 @@ Game::Game() {
 }
 
 Game::~Game() {
-	
 	e = 0;
 	delete e;
 	
-	
 	o = 0;
 	delete o;
-	
 	
 	p = 0;
 	delete p;
@@ -41,7 +38,7 @@ void Game::Draw() {
 }
 
 void Game::Update() {
-//	cout << e.GetCurrency() << endl;
+
 }
 
 
@@ -54,10 +51,13 @@ void Game::LoadSprites() {
 	for(int i = 0; i < ENEMY_NUM; i++) {
 		_enemySprites[i].load("enemies/e" + to_string(i) + ".png");
 	}
+	
+	for(int i = 0; i < UI_NUM; i++) {
+		_uiSprites[i].load("ui/u" + to_string(i) + ".png");
+	}
 }
 
 void Game::CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y) {
-	
 	switch(t) {
 		case PLAYER:
 			p = new Entity(health, maxHealth, currency, _characterSprites[sprite], x, y);
@@ -95,19 +95,28 @@ void Game::CreateUI() {
 		case BATTLE:
 			
 			ofDrawBitmapString("Hit Points: " + to_string(p->GetHP()) + "/" + to_string(p->GetMaxHP()), 100, 100);
-			ofDrawBitmapString("Gold: " + to_string(p->GetCurrency()), 100, 150);
+			ofDrawBitmapString("Gold: " + to_string(p->GetCurrency()), 100, 125);
 			CreateButton();
 			
-			//
+			DrawUIElement(HEALTH, 100, 100, true, -1, -0.57);
+			DrawUIElement(GOLD, 100, 125, true, -1, -0.57);
+			DrawUIElement(VERSUS, 450, 225, true, 0.25, -1);
 			
 			ofDrawBitmapString("Enemy Hit Points: " + to_string(e->GetHP()) + "/" + to_string(e->GetMaxHP()), 1000, 100);
-			ofDrawBitmapString("Gold: " + to_string(e->GetCurrency()), 1000, 150);
-			
+			ofDrawBitmapString("Gold: " + to_string(e->GetCurrency()), 1000, 125);
+			ofSetColor(255, 255, 255);
+	
 			break;
 		case DEATH:
 			break;
 	}
-	
-	
-	
+}
+
+void Game::DrawUIElement(UISprite sprite, float x, float y, bool selfShift, float xscl, float yscl) {
+	ofSetColor(255, 255, 255);
+	if(selfShift) {
+		_uiSprites[sprite].draw(x + _uiSprites[sprite].getWidth()*xscl, y + _uiSprites[sprite].getHeight()*yscl);
+	} else {
+		_uiSprites[sprite].draw(x, y);
+	}
 }

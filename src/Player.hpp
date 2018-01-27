@@ -12,21 +12,23 @@
 #include <stdio.h>
 #include "Entity.hpp"
 #include "ofImage.h"
+#include "Names.h"
 
-//class Player : public Entity {
-//	public:
-//		Player(){};
-//	
-//		Player(int health, int currency, ofImage sprite, float x, float y);
-//		~Player();
-//////	
-//////	void Draw();
-////		void Update();
-//	
-//	private:
-//		typedef Entity super;
-//	
-//		ofImage _sprite;
-//};
+
+
+class Player : public Entity {
+	public:
+		Player(){};
+		Player(CharacterName c, int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
+	
+		~Player(){};
+
+	
+	private:
+		typedef Entity super;
+		CharacterName _c;
+
+
+};
 
 #endif /* Player_hpp */

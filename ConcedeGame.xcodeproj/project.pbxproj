@@ -47,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BF2160DA201CFAAD0037851D /* Names.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Names.h; sourceTree = "<group>"; };
 		BFAF21A520190152001D3D3C /* Button.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Button.cpp; path = ../Button.cpp; sourceTree = "<group>"; };
 		BFAF21A620190152001D3D3C /* Button.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Button.hpp; path = ../Button.hpp; sourceTree = "<group>"; };
 		BFD11AB72016625500817F14 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 			children = (
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
+				BF2160DA201CFAAD0037851D /* Names.h */,
 				BFD11AC02016641100817F14 /* Game.cpp */,
 				BFD11AC12016641100817F14 /* Game.hpp */,
 				BFD11AB72016625500817F14 /* Entity.cpp */,
