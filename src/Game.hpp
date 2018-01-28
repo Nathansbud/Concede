@@ -67,6 +67,8 @@ class Game {
 	
         void Update();
 		void Draw();
+    
+        void SetMusic();
 	
         void CreateUI();
 
@@ -74,6 +76,7 @@ class Game {
 		static const int CHAR_NUM = 3;
 		static const int ENEMY_NUM = 8;
         static const int UI_NUM = 3;
+        static const int MUSIC_NUM = 2;
 	
         void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
     
@@ -81,27 +84,28 @@ class Game {
 		Button& GetButton(int index) {return _playerButtons[index];}
 
 		static const int UI_ELEM_SIZE = 30;
-    
-        const std::map<CharacterName, string> _enemyNameToString {
-//			{CORPSE, "Corpse"},
-//			{WALKING_CORPSE, "Walking Corpse"},
-//			{PANTS, "Ordinary Pants"},
-//			{SHIRT, "Ordinary Shirt"},
-//			{HAT, "Ordinary Hat"},
-//			{EYES, "Maneyes"},
-//			{ALPHABET_A, "Alphabet (Variant A)"},
-//			{ALPHABET_B, "Alphabet (Variant B)"},
-		};
-    
-        const std::map<EnemyName, string> _characterNameToString {
-//            {JIM, "Jim"},
-//            {BOX, "Krate"},
-//            {FLOAT, "Geoff"}
-        };
+	
+	
+//        const std::map<CharacterName, string> _enemyNameToString {
+////			{CORPSE, "Corpse"},
+////			{WALKING_CORPSE, "Walking Corpse"},
+////			{PANTS, "Ordinary Pants"},
+////			{SHIRT, "Ordinary Shirt"},
+////			{HAT, "Ordinary Hat"},
+////			{EYES, "Maneyes"},
+////			{ALPHABET_A, "Alphabet (Variant A)"},
+////			{ALPHABET_B, "Alphabet (Variant B)"},
+//		};
+//    
+//        const std::map<EnemyName, string> _characterNameToString {
+////            {JIM, "Jim"},
+////            {BOX, "Krate"},
+////            {FLOAT, "Geoff"}
+//        };
 
 	private:
 		void CreateButton();
-		void LoadSprites();
+		void LoadData();
 		
 		Entity *p;
         Entity *e;
@@ -109,9 +113,16 @@ class Game {
 	
         Button _playerButtons[2];
 
-        GameState state;
-    
-		string _characterNames[CHAR_NUM];
+        GameState _state;
+	
+		void DrawUIElement(UISprite sprite, float x, float y, bool selfShift = false, float xscl = 0, float yscl = 0);
+
+	
+		string _characterNames[CHAR_NUM] = {
+			"Jim",
+			"Krate",
+			"Geoff"
+		};
 		
     
         string _enemyNames[ENEMY_NUM] = {
@@ -128,11 +139,10 @@ class Game {
 		ofImage _characterSprites[CHAR_NUM];
 		ofImage _enemySprites[ENEMY_NUM];
         ofImage _uiSprites[UI_NUM];
-//		ofImage _textSprites[TEXT_NUM];
-	
-		void DrawUIElement(UISprite sprite, float x, float y, bool selfShift = false, float xscl = 0, float yscl = 0);
-    
+        ofSoundPlayer _music[MUSIC_NUM];
+
         string _userName;
+    
 };
 
 #endif /* Game_hpp */

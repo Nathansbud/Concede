@@ -2,11 +2,12 @@
 
 #include "ofMain.h"
 #include "Game.hpp"
+#include "Names.h"
 //#include "Entity.hpp"
 //#include "Player.hpp"
 //#include "Enemy.hpp"
 
-class ofApp : public ofBaseApp{
+class ofApp : public ofBaseApp { 
 
 	public:
 		void setup();

@@ -4,8 +4,8 @@
 void ofApp::setup(){
 	g = Game();
 
-	g.CreateEntity(PLAYER, 100, 100, 10, 1, 250, 300);
-	g.CreateEntity(ENEMY, 100, 100, 10, 4, 750, 300);
+	g.CreateEntity(EntityType::PLAYER, 100, 100, 10, CharacterName::JIM, 250, 300);
+	g.CreateEntity(EntityType::ENEMY, 100, 100, 10, EnemyName::PANTS, 750, 300);
 }
 
 void ofApp::update(){

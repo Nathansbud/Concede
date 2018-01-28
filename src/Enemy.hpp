@@ -16,7 +16,7 @@ class Enemy : public Entity {
 	public:
 		Enemy(){};
 		
-		Enemy(int health, int currency, ofImage &sprite, float x, float y);
+		Enemy(int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
 	
 		~Enemy();
 	

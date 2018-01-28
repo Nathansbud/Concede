@@ -15,17 +15,17 @@ enum class EntityType : int {
 	ENTITY
 };
 
-enum class EntityName {
+enum EntityName {
 	MERCHANT
 };
 
-enum class CharacterName {
+enum CharacterName {
 	JIM,
 	KRATE,
 	GEOFF,
 };
 
-enum class EnemyName {
+enum EnemyName {
 	CORPSE,
 	WALKING_CORPSE,
 	PANTS,

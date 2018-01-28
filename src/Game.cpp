@@ -9,9 +9,9 @@
 #include "Game.hpp"
 
 Game::Game() {
-	LoadSprites();
-	state = BATTLE;
-	
+	_state = BATTLE;
+	LoadData();
+	SetMusic();
 }
 
 Game::~Game() {
@@ -30,7 +30,7 @@ Game::~Game() {
 void Game::Draw() {
 	ofBackground(255, 255, 255);
 	CreateUI();
-	if(state == BATTLE) {
+	if(_state == BATTLE) {
 		p->Draw();
 		e->Draw();
 		_playerButtons[0].Draw();
@@ -43,7 +43,7 @@ void Game::Update() {
 
 
 
-void Game::LoadSprites() {
+void Game::LoadData() {
 	for(int i = 0; i < CHAR_NUM; i++) {
 		_characterSprites[i].load("characters/c" + to_string(i) + ".png");
 	}
@@ -55,17 +55,22 @@ void Game::LoadSprites() {
 	for(int i = 0; i < UI_NUM; i++) {
 		_uiSprites[i].load("ui/u" + to_string(i) + ".png");
 	}
+	
+	for(int i = 0; i < MUSIC_NUM; i++) {
+		_music[i].load("music/m" + to_string(i) + ".m4a");
+		_music[i].setLoop(true);
+	}
 }
 
 void Game::CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y) {
 	switch(t) {
-		case PLAYER:
+		case EntityType::PLAYER:
 			p = new Entity(health, maxHealth, currency, _characterSprites[sprite], x, y);
 			break;
-		case ENEMY:
+		case EntityType::ENEMY:
 			e = new Entity(health, maxHealth, currency, _enemySprites[sprite], x, y);
 			break;
-		case ENTITY:
+		case EntityType::ENTITY:
 			o = new Entity();
 			break;
 	}
@@ -87,7 +92,7 @@ void Game::CreateButton() {
 void Game::CreateUI() {
 	ofSetColor(0, 0, 0);
 	
-	switch(state) {
+	switch(_state) {
 		case TITLE:
 			break;
 		case OVERWORLD:
@@ -119,4 +124,22 @@ void Game::DrawUIElement(UISprite sprite, float x, float y, bool selfShift, floa
 	} else {
 		_uiSprites[sprite].draw(x, y);
 	}
+}
+
+void Game::SetMusic() {
+	switch(_state) {
+		case TITLE:
+			break;
+		
+		case OVERWORLD:
+			break;
+	
+		case BATTLE:
+			_music[1].play();
+			break;
+			
+		case DEATH:
+			break;
+	}
+	
 }
