@@ -34,5 +34,5 @@ void Entity::Draw() {
 }
 
 void Entity::Update() {
-
+	
 }

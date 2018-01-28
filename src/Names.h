@@ -9,6 +9,7 @@
 #ifndef Names_h
 #define Names_h
 
+
 enum class EntityType : int {
 	PLAYER,
 	ENEMY,

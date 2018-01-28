@@ -16,9 +16,11 @@ class Enemy : public Entity {
 	public:
 		Enemy(){};
 		
-		Enemy(int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
+		Enemy(EnemyName e, int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
 	
 		~Enemy();
+	
+		EnemyName GetName() {return _e;}
 	
 //		void Draw();
 //		void Update();

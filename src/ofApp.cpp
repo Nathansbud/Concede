@@ -9,13 +9,11 @@ void ofApp::setup(){
 }
 
 void ofApp::update(){
-
+	g.Update();
 }
 
 void ofApp::draw(){
 	g.Draw();
-	
-
 }
 
 void ofApp::keyPressed(int key){
@@ -35,9 +33,17 @@ void ofApp::mouseDragged(int x, int y, int button){
 }
 
 void ofApp::mousePressed(int x, int y, int button) {
-	if(x > g.GetButton(0).GetX() && x < g.GetButton(0).GetX() + g.GetButton(0).GetW() && y > g.GetButton(0).GetY() && y < g.GetButton(0).GetY() + g.GetButton(0).GetH()
-		) {
-		g.GetPlayer().ChangeHP(-1);
+	switch(g.GetState()) {
+		case GameState::BATTLE:
+			if(x > g.GetButton(0).GetX() && x < g.GetButton(0).GetX() + g.GetButton(0).GetW() && y > g.GetButton(0).GetY() && y < g.GetButton(0).GetY() + g.GetButton(0).GetH()
+				) {
+				g.GetEnemy().ChangeHP(-50);
+			}
+			break;
+		case GameState::BATTLE_WIN:
+			break;
+		default:
+			break;
 	}
 }
 

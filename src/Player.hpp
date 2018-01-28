@@ -22,6 +22,8 @@ class Player : public Entity {
 		Player(CharacterName c, int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
 	
 		~Player(){};
+	
+		CharacterName GetName() {return _c;}
 
 	
 	private:
