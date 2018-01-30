@@ -126,7 +126,8 @@ class Game {
 
         string _userName;
     
-        string _entityNames[ENTITY_NUM] = {
+	
+		string _entityNames[ENTITY_NUM] = {
             "Merchant"
         };
     
@@ -147,6 +148,15 @@ class Game {
             "Alphabet (Variant A)",
             "Alphabet (Variant B)"
         };
+	
+		int _playerStats[CHAR_NUM][5] {
+			{70, 70, 15, 6, 2}, //Jim
+			{90, 90, 20, 2, 5}, //Box
+			{30, 150, 0, 0, 16} //Psychic
+		};
+	
+	
+	
 };
 
 

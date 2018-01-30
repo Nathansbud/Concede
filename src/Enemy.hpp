@@ -22,13 +22,32 @@ class Enemy : public Entity {
 	
 		EnemyName GetName() {return _e;}
 	
+		void GenerateMove();
+		int GetMove() {return _move;}
+	
+		int GetBaseDMG() {return _damage[0];}
+		int GetStrength() {return _damage[1];}
+	
+
 //		void Draw();
 //		void Update();
 	
 	private:
 		typedef Entity super;
-		EnemyName _e;
 	
+		int _move;
+	
+		int _baseHP;
+		int _maxHP;
+	
+		int _baseDMG;
+		int _maxDMG;
+	
+		float _buff;
+	
+		int _damage[2]; //Base, Strength
+	
+		EnemyName _e;
 };
 
 #endif /* Enemy_hpp */

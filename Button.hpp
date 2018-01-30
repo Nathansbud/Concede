@@ -43,6 +43,7 @@ class Button {
 		bool isHovered = false;
 	
 		void SwitchHover() {isHovered = !isHovered;}
+		void SetHover(bool b) {isHovered = b;}
 		void SwitchSelection() {isSelected = !isSelected;}
 		
 
