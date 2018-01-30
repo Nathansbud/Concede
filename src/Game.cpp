@@ -24,6 +24,9 @@ Game::~Game() {
 	
 	p = 0;
 	delete p;
+	
+	en = 0;
+	delete en;
 }
 
 void Game::Draw() {
@@ -36,7 +39,7 @@ void Game::Draw() {
 			break;
 		case BATTLE:
 			
-			p->Draw();
+			en->Draw();
 			e->Draw();
 			
 			for(Button b : _playerButtons) {
@@ -61,7 +64,7 @@ void Game::Draw() {
 void Game::Update() {
 	if(_state == BATTLE) {
 		if(e->GetHP() <= 0 || e->GetCurrency() <= 0) {
-			p->ChangeCurrency(e->GetCurrency());
+			en->ChangeCurrency(e->GetCurrency());
 			SetState(BATTLE_WIN);
 		}
 	}
@@ -93,9 +96,26 @@ void Game::LoadData() {
 	}
 }
 
+void Game::CreateEntity(EntityType t, int sprite, float x, float y) {
+	switch(t) {
+		case EntityType::PLAYER:
+			en = new Entity(_characterSprites[sprite], _playerStats[sprite], x, y);
+			break;
+		case EntityType::ENEMY:
+			e = new Entity(_enemySprites[sprite], _enemyStats[sprite], x, y);
+			break;
+		case EntityType::ENTITY:
+			o = new Entity();
+			break;
+	}
+}
+
 void Game::CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y) {
 	switch(t) {
 		case EntityType::PLAYER:
+//			en = new Entity(_characterSprites[sprite], _playerStats[sprite], x, y);
+			
+			
 			p = new Player((CharacterName)sprite, health, maxHealth, currency, _characterSprites[sprite], x, y);
 			break;
 		case EntityType::ENEMY:
@@ -132,15 +152,15 @@ void Game::CreateUI() {
 			ofBackground(255, 255, 255);
 			ofSetColor(0, 0, 0);
 
-			ofDrawBitmapString("Hit Points: " + to_string(p->GetHP()) + "/" + to_string(p->GetMaxHP()), 100, 100);
-			ofDrawBitmapString("Gold: " + to_string(p->GetCurrency()), 100, 125);
-			ofDrawBitmapString(_characterNames[p->GetName()], p->GetX() + p->GetW()/2.75, p->GetY() - p->GetH()/10); //Player Name
+			ofDrawBitmapString("Hit Points: " + to_string(en->GetHP()) + "/" + to_string(en->GetMaxHP()), 100, 100);
+			ofDrawBitmapString("Gold: " + to_string(en->GetCurrency()), 100, 125);
+//			ofDrawBitmapString(_characterNames[en->GetName()], en->GetX() + en->GetW()/2.75, en->GetY() - en->GetH()/10); //Player Name
 			
 			ofDrawBitmapString("Hit Points: " + to_string(e->GetHP()) + "/" + to_string(e->GetMaxHP()), 1000, 100);
 			ofDrawBitmapString("Gold: " + to_string(e->GetCurrency()), 1000, 125);
-			ofDrawBitmapString(_enemyNames[e->GetName()], e->GetX() + e->GetW()/2.75, e->GetY() - e->GetH()/10);
+//			ofDrawBitmapString(_enemyNames[e->GetName()], e->GetX() + e->GetW()/2.75, e->GetY() - e->GetH()/10);
 			
-			ofDrawBitmapString("Turn " + to_string(GetTurn()), p->GetWX() + (e->GetX() - p->GetWX()), p->GetHY() + 100);
+			ofDrawBitmapString("Turn " + to_string(GetTurn()), en->GetWX() + (e->GetX() - en->GetWX()), en->GetHY() + 100);
 			
 			DrawUIElement(HEALTH, 100, 100, true, -1, -0.57);
 			DrawUIElement(GOLD, 100, 125, true, -1, -0.57);
@@ -178,12 +198,12 @@ void Game::CreateUI() {
 			ofBackground(0, 0, 0);
 			ofSetColor(255, 255, 255);
 			if(e->GetHP() <= 0) {
-				ofDrawBitmapString("Victory! " + _enemyNames[e->GetName()] + " was defeated, and you gained...", ofGetWidth()/3, ofGetHeight()/2);
+//				ofDrawBitmapString("Victory! " + _enemyNames[e->GetName()] + " was defeated, and you gained...", ofGetWidth()/3, ofGetHeight()/2);
 				ofDrawBitmapString(" - " +to_string(e->GetCurrency()) + " Gold", ofGetWidth()/3, ofGetHeight()/2 + 50);
 				
-				ofDrawBitmapString("Your gold total is now " + to_string(p->GetCurrency()) + " Gold!", ofGetWidth()/3, ofGetHeight()/2 + 150);
+				ofDrawBitmapString("Your gold total is now " + to_string(en->GetCurrency()) + " Gold!", ofGetWidth()/3, ofGetHeight()/2 + 150);
 			} else if(e->GetCurrency() <= 0) {
-				ofDrawBitmapString("Victory! " + _enemyNames[e->GetName()] + " ran out of Gold, and was unable to continue!", ofGetWidth()/3, ofGetHeight()/2);
+//				ofDrawBitmapString("Victory! " + _enemyNames[e->GetName()] + " ran out of Gold, and was unable to continue!", ofGetWidth()/3, ofGetHeight()/2);
 			}
 			break;
 		case DEATH:

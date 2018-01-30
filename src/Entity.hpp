@@ -30,6 +30,7 @@ class Entity {
 	public:
 		Entity(){};
 	
+		Entity(ofImage &sprite, float stats[7], int x, int y);
 	
 		Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y);
 		Entity(ofImage sprite, int x, int y); //For use for potraits; character select screen
@@ -40,15 +41,19 @@ class Entity {
 	
 		void SetPos(float x, float y);
 	
+	
+	
 		int GetDef() {return _def;}
-		int GetHP() {return _health[0];}
-		int GetMaxHP() {return _health[1];}
-		int GetCurrency() {return _currency;}
+		
+		
+		int GetHP() {return _stats[0];}
+		int GetMaxHP() {return _stats[1];}
+		int GetCurrency() {return _stats[2];}
 	
 		EntityType GetType() {return _t;}
 	
-		void ChangeHP(int amount) {_health[0] += amount;}
-		void ChangeCurrency(int amount) {_currency += amount;}
+		void ChangeHP(int amount) {_stats[0] += amount;}
+		void ChangeCurrency(int amount) {_stats[2] += amount;}
 		void ChangeDef(int amount) {_def += amount;}
 	
 		void TakeDamage(int amount);
@@ -69,11 +74,15 @@ class Entity {
 	
 	protected:
 		void SetType(EntityType t) { _t = t;}
-		void SetHP(int value) {_health[0] = value;}
-		void SetCurrency(int value) {_currency = value;}
+		void SetHP(int value) {_stats[0] = value;}
+		void SetCurrency(int value) {_stats[2] = value;}
 		void SetSprite(ofImage &sprite) {_sprite = sprite;}
 	
 	private:
+		float _stats[7];
+	
+	
+	
 		int _def = 0;
 		int _health[2];
 		int _currency;

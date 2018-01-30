@@ -81,8 +81,12 @@ class Game {
         static const int MUSIC_NUM = 2;
         static const int BUTTON_NUM = 3;
 	
+		static const int STAT_NUM = 7;
+	
         void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
 	
+	
+		void CreateEntity(EntityType t, int sprite, float x, float y);
 	
 		void SetState(GameState state) {_state = state;}
 		GameState GetState() {return _state;}
@@ -91,8 +95,10 @@ class Game {
         int GetTurn() {return _turn;}
 	
 	
-		Player& GetPlayer() {return *p;}
-		Enemy& GetEnemy() {return *e;}
+//		Player& GetPlayer() {return *p;}
+    
+        Entity& GetPlayer() {return *en;}
+		Entity& GetEnemy() {return *e;}
 		Button& GetButton(int index) {return _playerButtons[index];}
     
         Button& GetSubmit() {return _submitButton;}
@@ -107,8 +113,9 @@ class Game {
 		void LoadData();
 		
 		Player *p;
-        Enemy *e;
+        Entity *e;
 		Entity *o;
+		Entity *en;
 	
         Button _playerButtons[BUTTON_NUM];
         Button _submitButton;
@@ -149,14 +156,22 @@ class Game {
             "Alphabet (Variant B)"
         };
 	
-		int _playerStats[CHAR_NUM][5] {
-			{70, 70, 15, 6, 2}, //Jim
-			{90, 90, 20, 2, 5}, //Box
-			{30, 150, 0, 0, 16} //Psychic
+		float _playerStats[CHAR_NUM][STAT_NUM] {
+			{70, 70, 15, 6, 2, 0, 1.5}, //Jim
+			{90, 90, 20, 2, 5, 0, 1.5}, //Box
+			{30, 150, 0, 0, 16, 10, 2} //Psychic
 		};
 	
-	
-	
+		float _enemyStats[ENEMY_NUM][STAT_NUM] {
+			{50, 50, 10, 5, 0, 0, 1.5}, //Jim
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 0, 1.5},
+		};
 };
 
 

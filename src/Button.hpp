@@ -20,11 +20,6 @@ class Button {
 		Button(string text, float val, int goldCost, float x, float y, float w, float h); //User buttons
 		Button(string text, float x, float y, float w, float h); //Non-user buttons (inventory, shop)
 	
-	
-	
-//		Button(Entity &en, void (Entity::*function)(), string text, float x, float y, float w, float h);
-	
-//		Button(std::function<void(int)> toCall, int value, string text, float x, float y, float w, float h);
 		~Button();
 	
 		void Draw();
@@ -46,14 +41,6 @@ class Button {
 		void SetHover(bool b) {isHovered = b;}
 		void SwitchSelection() {isSelected = !isSelected;}
 		
-
-//		void Use(void (Entity::*function)(), Entity &en);
-	
-//		void SetParent(Entity &en);
-	
-//		Entity *parent;
-//		void (Entity::*_function)();
-
 	private:
 		float _buttonPos[2];
 		float _buttonSize[2];

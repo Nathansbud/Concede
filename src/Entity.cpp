@@ -8,13 +8,23 @@
 
 #include "Entity.hpp"
 
+Entity::Entity(ofImage &sprite, float stats[7], int x, int y) {
+	SetSprite(sprite);
+	SetPos(x, y);
+	for(int i = 0; i < 7; i++) {
+		_stats[i] = stats[i];
+	}
+}
+
 Entity::Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y) {
 	SetSprite(sprite);
 	SetPos(x, y);
-	_health[0] = health;
-	_health[1] = maxHealth;
-	_currency = currency;
+//	_health[0] = health;
+//	_health[1] = maxHealth;
+//	_currency = currency;
 }
+
+
 
 Entity::~Entity() {
 	
