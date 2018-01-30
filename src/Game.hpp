@@ -72,23 +72,32 @@ class Game {
         void SetMusic();
         void CreateUI();
 	
-	
+    
 
         static const int ENTITY_NUM = 1;
 		static const int CHAR_NUM = 3;
 		static const int ENEMY_NUM = 8;
         static const int UI_NUM = 3;
         static const int MUSIC_NUM = 2;
+        static const int BUTTON_NUM = 3;
 	
         void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
 	
 	
 		void SetState(GameState state) {_state = state;}
 		GameState GetState() {return _state;}
+    
+        void ChangeTurn() {_turn++;}
+        int GetTurn() {return _turn;}
+	
 	
 		Player& GetPlayer() {return *p;}
 		Enemy& GetEnemy() {return *e;}
 		Button& GetButton(int index) {return _playerButtons[index];}
+    
+        Button& GetSubmit() {return _submitButton;}
+
+		int GetButtonAmount() {return BUTTON_NUM;}
 
 		static const int UI_ELEM_SIZE = 30;
 	
@@ -101,10 +110,13 @@ class Game {
         Enemy *e;
 		Entity *o;
 	
-        Button _playerButtons[2];
+        Button _playerButtons[BUTTON_NUM];
+        Button _submitButton;
 	
         GameState _state;
 	
+        int _turn = 1;
+    
 		void DrawUIElement(UISprite sprite, float x, float y, bool selfShift = false, float xscl = 0, float yscl = 0);
 	
 		ofImage _characterSprites[CHAR_NUM];
@@ -134,7 +146,8 @@ class Game {
             "All-Eyes",
             "Alphabet (Variant A)",
             "Alphabet (Variant B)"
-        };    
+        };
 };
+
 
 #endif /* Game_hpp */

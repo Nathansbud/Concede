@@ -18,6 +18,13 @@
 
 #include "Names.h"
 
+enum ActionType {
+	ATTACK,
+	DEFEND,
+	HEAL,
+	STATUS,
+	BUFF
+};
 
 class Entity {
 	public:
@@ -33,7 +40,7 @@ class Entity {
 	
 		void SetPos(float x, float y);
 	
-	
+		int GetDef() {return _def;}
 		int GetHP() {return _health[0];}
 		int GetMaxHP() {return _health[1];}
 		int GetCurrency() {return _currency;}
@@ -42,6 +49,10 @@ class Entity {
 	
 		void ChangeHP(int amount) {_health[0] += amount;}
 		void ChangeCurrency(int amount) {_currency += amount;}
+		void ChangeDef(int amount) {_def += amount;}
+	
+		void TakeDamage(int amount);
+
 
 	
 		static const int SPRITE_W = 350;
@@ -55,10 +66,6 @@ class Entity {
 		
 		float GetWX() {return _spritePos[0] + 350;}
 		float GetHY() {return _spritePos[1] + 350;}
-
-	
-		//Player Pos = {500 (+ 350), }
-
 	
 	protected:
 		void SetType(EntityType t) { _t = t;}
@@ -66,8 +73,8 @@ class Entity {
 		void SetCurrency(int value) {_currency = value;}
 		void SetSprite(ofImage &sprite) {_sprite = sprite;}
 	
-	
 	private:
+		int _def = 0;
 		int _health[2];
 		int _currency;
 		EntityType _t;

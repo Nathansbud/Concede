@@ -33,6 +33,16 @@ void Entity::Draw() {
 	_sprite.draw(_spritePos[0], _spritePos[1]);
 }
 
+void Entity::TakeDamage(int amount) {
+	int dmg = GetDef() - amount;
+	
+	if(dmg < 0) {
+		ChangeHP(dmg);
+	} else {
+		cout << "Attack was blocked!" << endl;
+	}
+}
+
 void Entity::Update() {
 	
 }
