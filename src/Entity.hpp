@@ -32,7 +32,6 @@ class Entity {
 	
 		Entity(ofImage &sprite, float stats[7], int x, int y);
 	
-		Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y);
 		Entity(ofImage sprite, int x, int y); //For use for potraits; character select screen
 		~Entity();
 	

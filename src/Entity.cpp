@@ -16,16 +16,6 @@ Entity::Entity(ofImage &sprite, float stats[7], int x, int y) {
 	}
 }
 
-Entity::Entity(int health, int maxHealth, int currency, ofImage &sprite, int x, int y) {
-	SetSprite(sprite);
-	SetPos(x, y);
-//	_health[0] = health;
-//	_health[1] = maxHealth;
-//	_currency = currency;
-}
-
-
-
 Entity::~Entity() {
 	
 }

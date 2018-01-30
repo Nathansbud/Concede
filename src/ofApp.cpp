@@ -6,10 +6,6 @@ void ofApp::setup(){
 	
 	g.CreateEntity(EntityType::PLAYER, 0, 250, 300);
 	g.CreateEntity(EntityType::ENEMY, 1, 750, 300);
-	
-//
-//	g.CreateEntity(EntityType::PLAYER, 100, 100, 10, CharacterName::JIM, 250, 300);
-//	g.CreateEntity(EntityType::ENEMY, 100, 100, 10, EnemyName::CORPSE, 750, 300);
 }
 
 void ofApp::update(){

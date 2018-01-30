@@ -19,7 +19,7 @@
 class Player : public Entity {
 	public:
 		Player(){};
-		Player(CharacterName c, int health, int maxHealth, int currency, ofImage &sprite, float x, float y);
+		Player(CharacterName c, ofImage &sprite, float stats[8], float x, float y);
 	
 		~Player(){};
 	

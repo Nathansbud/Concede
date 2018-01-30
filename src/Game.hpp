@@ -83,9 +83,6 @@ class Game {
 	
 		static const int STAT_NUM = 7;
 	
-        void CreateEntity(EntityType t, int health, int maxHealth, int currency, int sprite, float x, float y);
-	
-	
 		void CreateEntity(EntityType t, int sprite, float x, float y);
 	
 		void SetState(GameState state) {_state = state;}
@@ -97,8 +94,8 @@ class Game {
 	
 //		Player& GetPlayer() {return *p;}
     
-        Entity& GetPlayer() {return *en;}
-		Entity& GetEnemy() {return *e;}
+        Player& GetPlayer() {return *p;}
+		Enemy& GetEnemy() {return *e;}
 		Button& GetButton(int index) {return _playerButtons[index];}
     
         Button& GetSubmit() {return _submitButton;}
@@ -113,7 +110,7 @@ class Game {
 		void LoadData();
 		
 		Player *p;
-        Entity *e;
+        Enemy *e;
 		Entity *o;
 		Entity *en;
 	

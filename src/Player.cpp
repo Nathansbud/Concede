@@ -8,8 +8,7 @@
 
 #include "Player.hpp"
 
-Player::Player(CharacterName c, int health, int maxHealth, int currency, ofImage &sprite, float x, float y) : super(health, maxHealth, currency, sprite, x, y) {
-	
+Player::Player(CharacterName c, ofImage &sprite, float stats[8], float x, float y) : super(sprite, stats, x, y) {
 	_c = c;
 }
 

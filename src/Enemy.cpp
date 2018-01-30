@@ -8,7 +8,7 @@
 
 #include "Enemy.hpp"
 
-Enemy::Enemy(EnemyName e, int health, int maxHealth, int currency, ofImage &sprite, float x, float y) : super(health, maxHealth, currency, sprite, x, y) {
+Enemy::Enemy(EnemyName e, ofImage &sprite, float stats[8], float x, float y) : super(sprite, stats, x, y) {
 	
 	SetType(EntityType::ENEMY);
 	_e = e;
@@ -20,11 +20,11 @@ Enemy::~Enemy() {
 
 }
 
-void Enemy::GenerateMove() {
-	int move = rand() % 4; //Attack, Defend, Steal, Buff
-	_move = move;
-//	SetMove(move);
-}
+//void Enemy::GenerateMove() {
+//	int move = rand() % 4; //Attack, Defend, Steal, Buff
+//	_move = move;
+////	SetMove(move);
+//}
 
 //void Enemy::MakeMove() {
 //	if(move == )
