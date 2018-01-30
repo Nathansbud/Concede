@@ -20,7 +20,10 @@ class ofApp : public ofBaseApp {
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
-
+	
+		int CheckMousePos(int x, int y);
+	
 	private:
 		Game g;
+	
 };

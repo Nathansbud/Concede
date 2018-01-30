@@ -40,6 +40,9 @@ class Button {
 		float GetH() {return _buttonSize[1];}
 	
 		bool isSelected = false;
+		bool isHovered = false;
+	
+		void SwitchHover() {isHovered = !isHovered;}
 		void SwitchSelection() {isSelected = !isSelected;}
 		
 

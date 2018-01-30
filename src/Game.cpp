@@ -148,19 +148,19 @@ void Game::CreateUI() {
 			
 			ofSetColor(0, 0, 0);
 			
-			if(_playerButtons[0].isSelected) {
+			if(_playerButtons[0].isHovered) {
 			
 				ofDrawBitmapString("- Deal " + to_string((int)_playerButtons[0].GetVal()) + " Damage", _playerButtons[0].GetX(), _playerButtons[0].GetY() + _playerButtons[0].GetH() + 25);
 				
 				ofDrawBitmapString("- Spend " + to_string(_playerButtons[0].GetCost()*-1) + " Gold", _playerButtons[0].GetX(), _playerButtons[0].GetY() + _playerButtons[0].GetH() + 50);
 				
-			}else if(_playerButtons[1].isSelected) {
+			}else if(_playerButtons[1].isHovered) {
 			
 				ofDrawBitmapString("- Block " + to_string((int)_playerButtons[1].GetVal()) + " Damage", _playerButtons[1].GetX(), _playerButtons[1].GetY() + _playerButtons[1].GetH() + 25);
 				
 				ofDrawBitmapString("- Spend " + to_string(_playerButtons[1].GetCost() * -1) + " Gold", _playerButtons[1].GetX(), _playerButtons[1].GetY() + _playerButtons[1].GetH() + 50);
 				
-			} else if(_playerButtons[2].isSelected) {
+			} else if(_playerButtons[2].isHovered) {
 				
 				ofDrawBitmapString("- Enemy Loses " + to_string((int)_playerButtons[2].GetVal() * -1) + " Gold", _playerButtons[2].GetX(), _playerButtons[2].GetY() + _playerButtons[2].GetH() + 25);
 				
