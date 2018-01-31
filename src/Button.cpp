@@ -19,9 +19,8 @@ Button::Button(string text, float x, float y, float w, float h) {
 	_buttonSize[1] = h;
 }
 
-Button::Button(string text, float val, int goldCost, float x, float y, float w, float h) {
+Button::Button(string text, int goldCost, float x, float y, float w, float h) {
 	_buttonText = text;
-	_val = val;
 	_goldCost = goldCost;
 	_buttonPos[0] = x;
 	_buttonPos[1] = y;

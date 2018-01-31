@@ -6,6 +6,9 @@ void ofApp::setup(){
 	
 	g.CreateEntity(EntityType::PLAYER, 0, 250, 300);
 	g.CreateEntity(EntityType::ENEMY, 1, 750, 300);
+	g.GetPlayer().Update();
+	g.GetEnemy().Update();
+	g.GetEnemy().GenerateMove();
 }
 
 void ofApp::update(){
@@ -52,6 +55,8 @@ void ofApp::mousePressed(int x, int y, int button) {
 	if(selected >= 0) {
 		switch(g.GetState()) {
 			case GameState::BATTLE:
+				
+				
 				if(selected < 100) {
 					for(int i = 0; i < g.GetButtonAmount(); i++) {
 						if(g.GetButton(i).isSelected) {
@@ -75,18 +80,25 @@ void ofApp::mousePressed(int x, int y, int button) {
 						}
 					}
 					
+					if(action >= 0) {
+						if(g.GetEnemy().GetMove() == 3 || g.GetEnemy().GetMove() == 4) {
+							g.GetEnemy().SetShielded(true);
+						}
+					}
+			
+					
 					switch(action) {
 						case 0:
-							g.GetEnemy().TakeDamage(g.GetButton(0).GetVal());
+							g.GetEnemy().TakeDamage(g.GetPlayer().GetDamage());
 							g.GetPlayer().ChangeCurrency(g.GetButton(0).GetCost());
 							break;
 						case 1:
-							g.GetPlayer().ChangeDef(g.GetButton(1).GetVal());
+							g.GetPlayer().SetShielded(true);
 							g.GetPlayer().ChangeCurrency(g.GetButton(1).GetCost());
 							break;
 						case 2:
-							g.GetEnemy().ChangeCurrency(g.GetButton(2).GetVal());
-							g.GetPlayer().ChangeCurrency(g.GetButton(2).GetCost());
+							g.GetEnemy().ChangeCurrency(-g.GetPlayer().GetSteal());
+							g.GetPlayer().ChangeCurrency(g.GetPlayer().GetSteal());
 							break;
 						case -2:
 							cout << "Insufficient Funds!" << endl;
@@ -95,7 +107,18 @@ void ofApp::mousePressed(int x, int y, int button) {
 							cout << "Nothing selected." << endl;
 							break;
 					}
+					
+					if(action >= 0) {
+						g.GetEnemy().MakeMove();						
+					}
+					
+					if(action >= 0) {
+						g.GetPlayer().Update();
+						g.GetEnemy().Update();
+						g.GetEnemy().GenerateMove();
+					}
 				}
+				
 				break;
 			default:
 				break;

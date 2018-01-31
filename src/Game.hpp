@@ -81,7 +81,7 @@ class Game {
         static const int MUSIC_NUM = 2;
         static const int BUTTON_NUM = 3;
 	
-		static const int STAT_NUM = 7;
+		static const int STAT_NUM = 9;
 	
 		void CreateEntity(EntityType t, int sprite, float x, float y);
 	
@@ -152,22 +152,34 @@ class Game {
             "Alphabet (Variant A)",
             "Alphabet (Variant B)"
         };
+    
+        string _statNames[STAT_NUM] {
+            "Health", //Current HP
+            "Max Health", //Max HP (upgradable)
+            "Gold", //Current Gold
+            "Attack", //Base DMG (upgradable)
+            "Strength", //DMG Mod, + rand() % this
+            "Defense", //Base Defense
+			"Guard", //Def Mod + rand() % this
+            "Wisdom", //Buff Mod, *= this
+			"Dexterity" //Steal amount, + rand() % this
+        };
 	
 		float _playerStats[CHAR_NUM][STAT_NUM] {
-			{70, 70, 15, 6, 2, 0, 1.5}, //Jim
-			{90, 90, 20, 2, 5, 0, 1.5}, //Box
-			{30, 150, 0, 0, 16, 10, 2} //Psychic
+			{70, 70, 15, 6, 2, 5, 0, 1.5, 5}, //Jim
+			{90, 90, 20, 2, 5, 5, 0, 1.5, 5}, //Box
+			{30, 150, 0, 0, 16, 0, 10, 2, 5} //Psychic
 		};
 	
 		float _enemyStats[ENEMY_NUM][STAT_NUM] {
-			{50, 50, 10, 5, 0, 0, 1.5}, //Jim
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
-			{50, 50, 10, 5, 0, 0, 1.5},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
+			{50, 50, 10, 5, 0, 5, 0, 1.5, 1},
 		};
 };
 

@@ -30,35 +30,46 @@ class Entity {
 	public:
 		Entity(){};
 	
-		Entity(ofImage &sprite, float stats[7], int x, int y);
+		Entity(ofImage &sprite, float stats[9], int x, int y);
 	
 		Entity(ofImage sprite, int x, int y); //For use for potraits; character select screen
 		~Entity();
 	
-		virtual void Draw();
-		virtual void Update();
+		void Draw();
+		void Update();
 	
 		void SetPos(float x, float y);
-	
-	
-	
-		int GetDef() {return _def;}
-		
 		
 		int GetHP() {return _stats[0];}
 		int GetMaxHP() {return _stats[1];}
 		int GetCurrency() {return _stats[2];}
+		int GetAttack() {return _stats[3];}
+		int GetStrength() {return _stats[4];}
+		int GetDef() {return _stats[5];}
+		int GetGuard() {return _stats[6];}
+		int GetWisdom() {return _stats[7];}
+		int GetDex() {return _stats[8];}
+	
+		int GetDamage() {return _damage;}
+		int GetBlock() {return _block;}
+		int GetSteal() {return _steal;}
+	
+		void SetShielded(bool b) {_shielded = b;}
+	
+		bool isShielded() {return _shielded;}
+	
+		float GetStat(int index) {return _stats[index];}
+
+
 	
 		EntityType GetType() {return _t;}
 	
 		void ChangeHP(int amount) {_stats[0] += amount;}
 		void ChangeCurrency(int amount) {_stats[2] += amount;}
-		void ChangeDef(int amount) {_def += amount;}
+
 	
 		void TakeDamage(int amount);
 
-
-	
 		static const int SPRITE_W = 350;
 		static const int SPRITE_H = 350;
 	
@@ -78,13 +89,15 @@ class Entity {
 		void SetSprite(ofImage &sprite) {_sprite = sprite;}
 	
 	private:
-		float _stats[7];
+		float _stats[9];
 	
-	
-	
-		int _def = 0;
-		int _health[2];
-		int _currency;
+		int _damage;
+		int _block;
+		int _steal;
+		
+		bool _shielded = false;
+		
+
 		EntityType _t;
 		string _entityName;
 		

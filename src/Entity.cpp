@@ -8,10 +8,10 @@
 
 #include "Entity.hpp"
 
-Entity::Entity(ofImage &sprite, float stats[7], int x, int y) {
+Entity::Entity(ofImage &sprite, float stats[9], int x, int y) {
 	SetSprite(sprite);
 	SetPos(x, y);
-	for(int i = 0; i < 7; i++) {
+	for(int i = 0; i < 9; i++) {
 		_stats[i] = stats[i];
 	}
 }
@@ -34,7 +34,8 @@ void Entity::Draw() {
 }
 
 void Entity::TakeDamage(int amount) {
-	int dmg = GetDef() - amount;
+	
+	int dmg = (isShielded()) ? GetBlock() - amount : -amount;
 	
 	if(dmg < 0) {
 		ChangeHP(dmg);
@@ -44,5 +45,20 @@ void Entity::TakeDamage(int amount) {
 }
 
 void Entity::Update() {
+	if(GetStrength() > 0) {
+		_damage = GetAttack() + (rand() % (GetStrength()+1));
+		cout << rand() % GetStrength() << endl;
+		
+	} else {_damage = GetAttack();}
 	
+	if(GetGuard() > 0) {
+		_block = GetDef() + int(rand() % GetGuard());
+	} else {_block = GetDef();}
+	
+	if(GetDex() > 0) {
+		_steal = rand() % GetDex();
+	} else {_steal = 0;}
+	
+	SetShielded(false);
 }
+

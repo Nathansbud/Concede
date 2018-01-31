@@ -17,7 +17,7 @@
 class Button {
 	public:
 		Button(){};
-		Button(string text, float val, int goldCost, float x, float y, float w, float h); //User buttons
+		Button(string text, int goldCost, float x, float y, float w, float h); //User buttons
 		Button(string text, float x, float y, float w, float h); //Non-user buttons (inventory, shop)
 	
 		~Button();
@@ -26,7 +26,7 @@ class Button {
 		void Update();
 	
 		int GetCost() {return _goldCost;}
-		float GetVal() {return _val;}
+//		float GetVal() {return _val;}
 	
 		float GetX() {return _buttonPos[0];}
 		float GetY() {return _buttonPos[1];}
@@ -44,7 +44,7 @@ class Button {
 	private:
 		float _buttonPos[2];
 		float _buttonSize[2];
-		float _val;
+//		float _val;
 		int _goldCost; //Used for "amount" of affect. This is a multiplier if status effect (ie "1.5x damage"), an amount of Def/Block if used on Defense, and an amount of Damage if used on offense.
 		string _buttonText;
 };
